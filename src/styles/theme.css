@@ -1,0 +1,196 @@
+/* HYPERION OS — COLOR SYSTEM & DESIGN TOKENS */
+:root {
+  /* PRIMARY PALETTE */
+  --color-deep-navy: #0A1931;
+  --color-ocean-blue: #1A3D63;
+  --color-muted-blue: #4A7FA7;
+  --color-soft-blue: #B3CFE5;
+  --color-arctic-white: #F6FAFD;
+
+  /* COLOR HIERARCHY MAPPING */
+  /* Base & Navigation Backgrounds */
+  --bg-app: #0A1931;
+  --bg-sidebar: #0A1931;
+  --bg-deep-nav: #0A1931;
+  --bg-header: #0A1931;
+
+  /* Secondary Surfaces & Containers */
+  --bg-surface-secondary: #1A3D63;
+  --bg-nav-active: #1A3D63;
+  --bg-mode-container: #1A3D63;
+  --bg-state-selected: #1A3D63;
+
+  /* Interactive & Accents */
+  --color-btn-primary: #4A7FA7;
+  --color-btn-primary-text: #F6FAFD;
+  --color-btn-primary-hover: #B3CFE5;
+  --color-btn-primary-hover-text: #0A1931;
+
+  --color-btn-secondary: rgba(179, 207, 229, 0.10);
+  --color-btn-secondary-text: #B3CFE5;
+  --color-btn-secondary-hover: rgba(179, 207, 229, 0.18);
+  --color-btn-secondary-hover-text: #F6FAFD;
+
+  /* Highlights & Borders */
+  --color-border-subtle: rgba(179, 207, 229, 0.12);
+  --color-border-hover: rgba(179, 207, 229, 0.25);
+  --color-border-strong: #4A7FA7;
+
+  /* Active Glow & Accents */
+  --color-active-accent: #4A7FA7;
+  --glow-active: 0 0 20px rgba(74, 127, 167, 0.20);
+  --glow-active-strong: 0 0 25px rgba(74, 127, 167, 0.35);
+
+  /* TEXT SYSTEM */
+  --text-primary: #F6FAFD;
+  --text-secondary: #B3CFE5;
+  --text-muted: rgba(179, 207, 229, 0.65);
+
+  /* GLASSMORPHISM SPECIFICATION */
+  --glass-bg: rgba(26, 61, 99, 0.45);
+  --glass-bg-dense: rgba(26, 61, 99, 0.65);
+  --glass-bg-subtle: rgba(26, 61, 99, 0.25);
+  --glass-border: rgba(179, 207, 229, 0.12);
+  --glass-border-highlight: rgba(179, 207, 229, 0.22);
+  --glass-blur: blur(24px);
+  --glass-shadow: 0 20px 60px rgba(10, 25, 49, 0.35);
+  --card-shadow: 0 10px 30px rgba(10, 25, 49, 0.45);
+
+  /* CARD SYSTEM */
+  --card-bg-base: rgba(26, 61, 99, 0.40);
+  --card-bg-hover: rgba(26, 61, 99, 0.60);
+  --card-bg-highlight: rgba(179, 207, 229, 0.08);
+
+  /* TYPOGRAPHY STACK */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', SFMono-Regular, monospace;
+
+  /* TRANSITIONS & RADII */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* RESET & BASE STYLES */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* SUBTLE LAYERED BACKGROUND WITH ATMOSPHERIC RADIAL GRADIENTS */
+body {
+  background: 
+    radial-gradient(circle at 15% 20%, rgba(26, 61, 99, 0.40) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(74, 127, 167, 0.18) 0%, transparent 50%),
+    radial-gradient(circle at 50% 40%, rgba(26, 61, 99, 0.20) 0%, transparent 60%),
+    var(--bg-app);
+  background-attachment: fixed;
+}
+
+/* SCROLLBAR CUSTOMIZATION */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(179, 207, 229, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(179, 207, 229, 0.30);
+}
+
+/* GLASS CONTAINER REUSABLE CLASS */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-md);
+}
+
+.glass-card {
+  background: var(--card-bg-base);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal);
+}
+
+.glass-card:hover {
+  background: var(--card-bg-hover);
+  border-color: var(--color-border-hover);
+  box-shadow: 0 16px 40px rgba(10, 25, 49, 0.55);
+}
+
+/* BUTTON UTILITIES */
+.btn-primary {
+  background: var(--color-btn-primary);
+  color: var(--color-btn-primary-text);
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background: var(--color-btn-primary-hover);
+  color: var(--color-btn-primary-hover-text);
+  box-shadow: var(--glow-active);
+}
+
+.btn-secondary {
+  background: var(--color-btn-secondary);
+  color: var(--color-btn-secondary-text);
+  border: 1px solid var(--color-border-subtle);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: var(--color-btn-secondary-hover);
+  color: var(--color-btn-secondary-hover-text);
+  border-color: var(--color-border-hover);
+}
+
+/* ACTIVE STATE GLOW */
+.active-state {
+  background: var(--bg-nav-active) !important;
+  border-color: var(--color-active-accent) !important;
+  box-shadow: var(--glow-active) !important;
+  color: var(--text-primary) !important;
+}
